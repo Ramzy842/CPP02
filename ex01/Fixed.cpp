@@ -6,7 +6,7 @@
 /*   By: rchahban <rchahban@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 21:22:50 by rchahban          #+#    #+#             */
-/*   Updated: 2023/11/30 07:04:34 by rchahban         ###   ########.fr       */
+/*   Updated: 2023/12/01 10:41:50 by rchahban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,20 +48,20 @@ void Fixed::setRawBits( int const raw )
 
 Fixed::Fixed(const int number)
 {
-	fixed = number << fracBits;
+	fixed = number * 256;
 	std::cout << "Int constructor called!" << std::endl;
 }
 Fixed::Fixed(const float number)
 {
-	fixed = ((int)roundf(number * (1 << fracBits)));
+	fixed = ((int)roundf(number * 256));
 	std::cout << "Float constructor called!" << std::endl;
 }
 float Fixed::toFloat(void) const {
-	return ((float)fixed / (1 << fracBits));
+	return ((float)fixed / 256);
 }
 int Fixed::toInt(void) const
 {
-	return ((int)(roundf((float)fixed / (1 << fracBits))));
+	return ((int)(roundf((float)fixed / 256)));
 }
 
 std::ostream& operator<<(std::ostream& os, const Fixed& fx)
